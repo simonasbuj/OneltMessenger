@@ -191,20 +191,6 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    // Disable button and show loading bar
-    fun startLoading(){
-        btn_signup.isClickable = false
-        btn_signup.textSize = 0f
-        pbc_loading.visibility = View.VISIBLE
-    }
-
-    fun stopLoading(){
-        pbc_loading.visibility = View.GONE
-        btn_signup.textSize = 14f
-        btn_signup.isClickable = true
-
-    }
-
     // Hide keyboard if clicked outside of it.....
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         UtilityClass.closeKeyboardOnOutsideTouch(ev, currentFocus, this)

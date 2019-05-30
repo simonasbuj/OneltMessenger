@@ -23,7 +23,7 @@
                     android:layout_height="50dp"
                     android:inputType="textEmailAddress"
                     android:background="@drawable/rounded_edittext"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:paddingLeft="20dp"
                     android:ems="10"
                     android:id="@+id/et_email"
@@ -36,7 +36,7 @@
                     android:layout_height="50dp"
                     android:inputType="textPassword"
                     android:background="@drawable/rounded_edittext"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:paddingLeft="20dp"
                     android:ems="10"
                     android:id="@+id/et_password" android:layout_marginTop="8dp"
@@ -44,7 +44,7 @@
                     app:layout_constraintStart_toStartOf="@+id/et_email"
                     app:layout_constraintEnd_toEndOf="@+id/et_email"/>
             <Button
-                    android:text="LOGIN"
+                    android:text="@string/login"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
@@ -55,7 +55,7 @@
                     app:layout_constraintStart_toStartOf="@+id/et_password"
                     app:layout_constraintEnd_toEndOf="@+id/et_password"/>
             <TextView
-                    android:text="Don't have an account?"
+                    android:text="@string/dont_have_an_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"

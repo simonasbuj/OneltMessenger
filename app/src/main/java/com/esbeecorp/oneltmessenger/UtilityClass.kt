@@ -42,10 +42,10 @@ class UtilityClass{
                             view is EditText &&
                             !view.javaClass.name.startsWith("android.webkit.")) {
 
-                            var scrCoords = IntArray(2)
+                            val scrCoords = IntArray(2)
                             view.getLocationOnScreen(scrCoords)
 
-                            val x = ev.rawX + view.left - scrCoords[0];
+                            val x = ev.rawX + view.left - scrCoords[0]
                             val y = ev.rawY + view.top - scrCoords[1]
 
                             if (x < view.left || x > view.right || y < view.top || y > view.bottom)
@@ -59,7 +59,7 @@ class UtilityClass{
 
         private fun hideKeyboard(activity: Activity){
             // Maybe not all ifs are needed :D
-            if (activity != null && activity.window != null && activity.window.decorView != null) {
+            if (activity != null  && activity.window != null && activity.window.decorView != null) {
                 val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(activity.window.decorView.windowToken, 0)
             }
@@ -67,14 +67,14 @@ class UtilityClass{
 
 
         // Disables the button, hides its text and shows loading bar
-        public fun startLoadingOnButton(btn: Button, pb: ProgressBar){
+        fun startLoadingOnButton(btn: Button, pb: ProgressBar){
             btn.isClickable = false
             btn.textSize = 0f
             pb.visibility = View.VISIBLE
         }
 
         // Enables the button, shows its text and hides loading bar
-        public fun stopLoadingOnButton(btn: Button, pb: ProgressBar){
+        fun stopLoadingOnButton(btn: Button, pb: ProgressBar){
             pb.visibility = View.GONE
             btn.textSize = 14f
             btn.isClickable = true
