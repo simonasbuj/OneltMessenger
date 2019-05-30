@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -40,6 +41,8 @@ class SignupActivity : AppCompatActivity() {
     // Validates input fields
     private fun proccessRegistration(){
 
+        UtilityClass.startLoadingOnButton(btn_signup, pbc_loading)
+
         val email = et_email.text.toString()
         val password = et_password.text.toString()
         val username = et_username.text.toString()
@@ -47,6 +50,7 @@ class SignupActivity : AppCompatActivity() {
         // check if input is not empty
         if (email.isBlank() || password.isBlank() || username.isBlank() || selectedPhotoUri == null){
             Toast.makeText(this, "Fill empty fields or select an image!! ", Toast.LENGTH_SHORT).show()
+            UtilityClass.stopLoadingOnButton(btn_signup, pbc_loading)
             return
         } else {
 
@@ -61,6 +65,7 @@ class SignupActivity : AppCompatActivity() {
 
                         Log.d("Register", "username already taken")
                         Toast.makeText(this, "Username: ${it.documents.get(0)["username"]} is already taken :(.", Toast.LENGTH_SHORT).show()
+                        UtilityClass.stopLoadingOnButton(btn_signup, pbc_loading)
 
                     } else { singupNewUser(email, password) }
                 }
@@ -84,6 +89,7 @@ class SignupActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("Register", "SignUp failed: ${it.message}")
                 Toast.makeText(this, "SignUp failed: ${it.message}", Toast.LENGTH_LONG).show()
+                UtilityClass.stopLoadingOnButton(btn_signup, pbc_loading)
             }
     }
 
@@ -135,6 +141,7 @@ class SignupActivity : AppCompatActivity() {
             }
             .addOnFailureListener{
                 Toast.makeText(this, "Something went wrong :(. ${it.message}", Toast.LENGTH_LONG).show()
+                UtilityClass.stopLoadingOnButton(btn_signup, pbc_loading)
             }
 
     }
@@ -178,9 +185,24 @@ class SignupActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Something went wrong :(. ${it.message}", Toast.LENGTH_LONG).show()
+                    UtilityClass.stopLoadingOnButton(btn_signup, pbc_loading)
                 }
 
         }
+    }
+
+    // Disable button and show loading bar
+    fun startLoading(){
+        btn_signup.isClickable = false
+        btn_signup.textSize = 0f
+        pbc_loading.visibility = View.VISIBLE
+    }
+
+    fun stopLoading(){
+        pbc_loading.visibility = View.GONE
+        btn_signup.textSize = 14f
+        btn_signup.isClickable = true
+
     }
 
     // Hide keyboard if clicked outside of it.....

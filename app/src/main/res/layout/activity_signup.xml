@@ -11,7 +11,7 @@
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
             >
@@ -60,8 +60,10 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:id="@+id/btn_signup" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/et_password" app:layout_constraintStart_toStartOf="@+id/et_password"
-                app:layout_constraintEnd_toEndOf="@+id/et_password"/>
+                app:layout_constraintTop_toBottomOf="@+id/et_password"
+                app:layout_constraintStart_toStartOf="@+id/et_password"
+                app:layout_constraintEnd_toEndOf="@+id/et_password" app:layout_constraintHorizontal_bias="0.0"
+                android:scrollbarSize="4dp"/>
         <TextView
                 android:text="Already have an account?"
                 android:layout_width="wrap_content"
@@ -94,6 +96,17 @@
                 app:layout_constraintStart_toStartOf="@+id/btn_addphoto"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_addphoto"
                 app:layout_constraintEnd_toEndOf="@+id/btn_addphoto" android:id="@+id/iv_circle_image"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:indeterminateTint="@android:color/white"
+                android:id="@+id/pbc_loading"
+                android:translationZ="10dp" android:scrollbarSize="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_signup"
+                app:layout_constraintStart_toStartOf="@+id/btn_signup"
+                app:layout_constraintTop_toTopOf="@+id/btn_signup"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_signup" android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

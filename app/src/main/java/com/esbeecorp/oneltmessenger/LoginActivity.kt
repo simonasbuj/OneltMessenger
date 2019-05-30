@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun proccessLogin(){
+
         val email = et_email.text.toString()
         val password = et_password.text.toString()
 
@@ -34,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "No can do :(", Toast.LENGTH_SHORT).show()
             return
         }
+
+        UtilityClass.startLoadingOnButton(btn_login, pbc_loading)
 
         // try to login the user
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -51,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Login failed: ${it.message}", Toast.LENGTH_LONG).show()
+                UtilityClass.stopLoadingOnButton(btn_login, pbc_loading)
             }
     }
 
