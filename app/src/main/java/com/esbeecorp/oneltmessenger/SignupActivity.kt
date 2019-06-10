@@ -113,13 +113,13 @@ class SignupActivity : AppCompatActivity() {
         if (requestCode == SELECT_PHOTO_ID && resultCode == Activity.RESULT_OK){
             if (data != null){
 
-                selectedPhotoUri = data.data
-
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
-
                 // show image on circle image view and make button transparent
-                iv_circle_image.setImageBitmap(bitmap)
+                selectedPhotoUri = data.data
+                iv_circle_image.setImageURI(selectedPhotoUri)
                 btn_addphoto.alpha = 0f
+
+                //val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
+                //iv_circle_image.setImageBitmap(bitmap)
             }
         }
     }
